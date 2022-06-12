@@ -2,11 +2,6 @@ html {
     @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
     font-family: 'Courier Prime', monospace;
 }
-body {
-    background-color: #1a1c1e;
-    color: #e1e1e4;
-    margin: 0;
-}
 
 .break {
     flex-basis: 100%;
@@ -20,20 +15,26 @@ body {
     align-items: center;
 }
 
-.calculator {
-
-}
-
 button {
     font-family: inherit;
     font-size: 42px;
     border: none;
-    color: #e1e1e4;
-    background-color: #1f2529;
     width: 100px;
     height: 100px;
     border-radius: 50px;
     margin-top: 10px;
+}
+
+.button {
+    border-radius: 50px;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
+}
+
+button:active {
+    border-radius: 25px;
+    transition-duration: 0.25s;
+    transition-timing-function: ease-out;
 }
 
 .display, #display {
@@ -46,6 +47,11 @@ button {
     font-size: 64px;
 }
 
+#backspace, #decimal, #zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
+    background-color: #1f2529;
+    color: #e1e1e4;
+}
+
 #parentheses, #percent, #divide, #multiply, #subtract, #add {
     background-color: #9eacba;
     color: #101d28;
@@ -55,7 +61,13 @@ button {
     background-color: #cce4fb;
     color: #081d2e;
 }
+
 #all-clear {
     background-color: #e7dcfb;
     color: #1f133e
+}
+
+body {
+    margin: 0;
+    opacity: 1;
 }
