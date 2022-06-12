@@ -18,3 +18,27 @@ const operate = (operator, a, b) => {
       return divide(a, b);
     }
 };
+
+const display = document.querySelector('#display');
+const numbers = document.querySelectorAll('#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine');
+
+numbers.forEach(number => number.addEventListener('click', () => {
+  display.value += number.textContent;
+}));
+
+let firstNumber = '';
+currentOperator = '';
+const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide');
+operators.forEach(operator => operator.addEventListener('click', () => {
+  firstNumber = display.value;
+  display.value = '';
+  if (operator.id === 'add') {
+    currentOperator = '+';
+  } else if (operator.id === 'subtract') {
+    currentOperator = '-';
+  } else if (operator.id === 'multiply') {
+    currentOperator = '*';
+  } else if (operator.id === 'divide') {
+    currentOperator = '/';
+  }
+}));
