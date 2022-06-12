@@ -28,44 +28,43 @@ numbers.forEach(number => number.addEventListener('click', () => {
 
 let firstNumber = '';
 let currentOperator = '';
+let secondNumber = '';
+
 const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide');
 operators.forEach(operator => operator.addEventListener('click', () => {
+  if (firstNumber === '') {
   firstNumber = display.value;
+  } else {
+    math();
+  }
+  if (operator.id === 'add') {
+    currentOperator = '+';
+  } else if (operator.id === 'subtract') {
+    currentOperator = '-';
+  } else if (operator.id === 'multiply') {
+    currentOperator = '*';
+  } else if (operator.id === 'divide') {
+    currentOperator = '/';
+  }
   display.value = '';
-  if (operator.id === 'add') {
-    currentOperator = '+';
-  } else if (operator.id === 'subtract') {
-    currentOperator = '-';
-  } else if (operator.id === 'multiply') {
-    currentOperator = '*';
-  } else if (operator.id === 'divide') {
-    currentOperator = '/';
-  }
 }));
-
-const addOperator = () => {
-  if (operator.id === 'add') {
-    currentOperator = '+';
-  } else if (operator.id === 'subtract') {
-    currentOperator = '-';
-  } else if (operator.id === 'multiply') {
-    currentOperator = '*';
-  } else if (operator.id === 'divide') {
-    currentOperator = '/';
-  }
-}
-
-
-let secondNumber = '';
-const equals = document.querySelector('#equals');
-equals.addEventListener('click', () => {
-  math();
-});
 
 const math = () => {
   secondNumber = display.value;
-  display.value = operate(currentOperator, firstNumber, secondNumber);
+  firstNumber = operate(currentOperator, firstNumber, secondNumber);
+  secondNumber = '';
 };
+
+const equals = document.querySelector('#equals');
+equals.addEventListener('click', () => {
+  if (firstNumber === '') {
+    firstNumber = display.value;
+  } else {
+    math();
+  }
+  display.value = firstNumber;
+  firstNumber = '';
+});
 
 let allClear = document.querySelector('#all-clear');
 allClear.addEventListener('click', () => {
