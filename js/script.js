@@ -43,12 +43,29 @@ operators.forEach(operator => operator.addEventListener('click', () => {
   }
 }));
 
+const addOperator = () => {
+  if (operator.id === 'add') {
+    currentOperator = '+';
+  } else if (operator.id === 'subtract') {
+    currentOperator = '-';
+  } else if (operator.id === 'multiply') {
+    currentOperator = '*';
+  } else if (operator.id === 'divide') {
+    currentOperator = '/';
+  }
+}
+
+
 let secondNumber = '';
 const equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
+  math();
+});
+
+const math = () => {
   secondNumber = display.value;
   display.value = operate(currentOperator, firstNumber, secondNumber);
-});
+};
 
 let allClear = document.querySelector('#all-clear');
 allClear.addEventListener('click', () => {

@@ -3,8 +3,8 @@ html {
     font-family: 'Courier Prime', monospace;
 }
 body {
-    background-color: #202020;
-    color: #fff;
+    background-color: #1a1c1e;
+    color: #e1e1e4;
     margin: 0;
 }
 
@@ -26,10 +26,10 @@ body {
 
 button {
     font-family: inherit;
-    font-size: 64px;
+    font-size: 42px;
     border: none;
-    color: #fff;
-    background-color: #363636;
+    color: #e1e1e4;
+    background-color: #1f2529;
     width: 100px;
     height: 100px;
     border-radius: 50px;
@@ -39,9 +39,23 @@ button {
 .display, #display {
     width: 421px;
     height: 100px;
-    background-color: #363636;
+    background-color: #2b343b;
     border: none;
-    color: #fff;
+    color: #e1e1e4;
     font-family: inherit;
     font-size: 64px;
+}
+
+#parentheses, #percent, #divide, #multiply, #subtract, #add {
+    background-color: #9eacba;
+    color: #101d28;
+}
+
+#equals {
+    background-color: #cce4fb;
+    color: #081d2e;
+}
+#all-clear {
+    background-color: #e7dcfb;
+    color: #1f133e
 }
