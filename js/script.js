@@ -1,4 +1,4 @@
-const add = (a, b) => a + b;
+const add = (a, b) => parseInt(a) + parseInt(b);
 
 const subtract = (a, b) => a - b;
 
@@ -27,7 +27,7 @@ numbers.forEach(number => number.addEventListener('click', () => {
 }));
 
 let firstNumber = '';
-currentOperator = '';
+let currentOperator = '';
 const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide');
 operators.forEach(operator => operator.addEventListener('click', () => {
   firstNumber = display.value;
@@ -42,3 +42,18 @@ operators.forEach(operator => operator.addEventListener('click', () => {
     currentOperator = '/';
   }
 }));
+
+let secondNumber = '';
+const equals = document.querySelector('#equals');
+equals.addEventListener('click', () => {
+  secondNumber = display.value;
+  display.value = operate(currentOperator, firstNumber, secondNumber);
+});
+
+let allClear = document.querySelector('#all-clear');
+allClear.addEventListener('click', () => {
+  display.value = '';
+  firstNumber = '';
+  currentOperator = '';
+  secondNumber = '';
+});
