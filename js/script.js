@@ -12,6 +12,11 @@ const divide = (a, b) => {
   }
 };
 
+const percentage = (a, b) => {
+  b = 100
+  return a / b;
+}
+
 const operate = (operator, a, b) => {
   switch (operator) {
     case '+':
@@ -22,7 +27,9 @@ const operate = (operator, a, b) => {
       return multiply(a, b);
     case '/':
       return divide(a, b);
-    }
+    case '%':
+      return percentage(a, b);
+  }
 };
 
 const display = document.querySelector('#display');
@@ -36,7 +43,7 @@ let firstNumber = '';
 let currentOperator = '';
 let secondNumber = '';
 
-const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide');
+const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide, #percentage');
 operators.forEach(operator => operator.addEventListener('click', () => {
   math();
   if (operator.id === 'add') {
@@ -47,6 +54,8 @@ operators.forEach(operator => operator.addEventListener('click', () => {
     currentOperator = '*';
   } else if (operator.id === 'divide') {
     currentOperator = '/';
+  } else if (operator.id === 'percentage') {
+    currentOperator = '%';
   }
   display.value = '';
 }));
@@ -68,7 +77,7 @@ equals.addEventListener('click', () => {
   firstNumber = '';
 });
 
-let allClear = document.querySelector('#all-clear');
+const allClear = document.querySelector('#all-clear');
 allClear.addEventListener('click', () => {
   display.value = '';
   firstNumber = '';
