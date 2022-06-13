@@ -65,7 +65,7 @@ const math = () => {
     firstNumber = display.value;
   } else {
     secondNumber = display.value;
-    firstNumber = operate(currentOperator, firstNumber, secondNumber);
+    firstNumber = round(operate(currentOperator, firstNumber, secondNumber));
     secondNumber = '';
   }
 };
@@ -99,3 +99,4 @@ decimal.addEventListener('click', () => {
   }
 });
 
+const round = (num) => +(Math.round(num + "e+2")  + "e-2");
