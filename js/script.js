@@ -1,4 +1,4 @@
-const add = (a, b) => parseInt(a) + parseInt(b);
+const add = (a, b) => +a + +b;
 
 const subtract = (a, b) => a - b;
 
@@ -89,3 +89,13 @@ const backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', () => {
   display.value = display.value.slice(0, -1);
 });
+
+const decimal = document.querySelector('#decimal');
+decimal.addEventListener('click', () => {
+  if (display.value.indexOf('.') === -1) {
+    display.value += '.';
+  } else {
+    display.value = display.value;
+  }
+});
+
