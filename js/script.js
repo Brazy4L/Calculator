@@ -6,7 +6,7 @@ const multiply = (a, b) => a * b;
 
 const divide = (a, b) => {
   if (b === '0') {
-    return 9000;
+    return 'BRAZY';
   } else {
     return a / b;
   }
@@ -65,6 +65,7 @@ const math = () => {
     firstNumber = display.value;
   } else {
     secondNumber = display.value;
+    //console.log(operate(currentOperator, firstNumber, secondNumber));
     firstNumber = round(operate(currentOperator, firstNumber, secondNumber));
     secondNumber = '';
   }
@@ -99,4 +100,14 @@ decimal.addEventListener('click', () => {
   }
 });
 
-const round = (num) => +(Math.round(num + "e+2")  + "e-2");
+const round = (num) => {
+  if (num === 'BRAZY') {
+    return 'It\'s Over 9000!';
+  } else if (Number.isNaN(num)) {
+    return '⬇️ Press AC';
+  } else {
+    return Math.round(num * 100) / 100;
+    //return num.toFixed(2);
+    //return +(Math.round(num + "e+2")  + "e-2");
+  }
+};
