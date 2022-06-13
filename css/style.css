@@ -1,6 +1,5 @@
 html {
-    @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-    font-family: 'Courier Prime', monospace;
+    font-family: 'Cascadia Code', sans-serif;
 }
 
 .break {
@@ -17,15 +16,16 @@ html {
 
 button {
     font-family: inherit;
-    font-size: 42px;
+    font-size: 35px;
     border: none;
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50px;
     margin-top: 10px;
     border-radius: 50px;
     transition: border-radius 0.5s ease-out;
     cursor: pointer;
+    padding: 0;
 }
 
 button:active {
@@ -33,14 +33,15 @@ button:active {
     transition: border-radius 0.07s ease-out;
 }
 
-.display, #display {
-    width: 421px;
+#display {
+    font-family: inherit;
+    font-size: 50px;
+    width: 348.15px;
     height: 100px;
     background-color: #2b343b;
     border: none;
     color: #e1e1e4;
-    font-family: inherit;
-    font-size: 64px;
+    padding: 0;
 }
 
 #backspace, #decimal, #zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine {

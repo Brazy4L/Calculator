@@ -65,7 +65,6 @@ const math = () => {
     firstNumber = display.value;
   } else {
     secondNumber = display.value;
-    //console.log(operate(currentOperator, firstNumber, secondNumber));
     firstNumber = round(operate(currentOperator, firstNumber, secondNumber));
     secondNumber = '';
   }
@@ -104,10 +103,8 @@ const round = (num) => {
   if (num === 'BRAZY') {
     return 'It\'s Over 9000!';
   } else if (Number.isNaN(num)) {
-    return '⬇️ Press AC';
+    return ' ⇩ Press AC';
   } else {
     return Math.round(num * 100) / 100;
-    //return num.toFixed(2);
-    //return +(Math.round(num + "e+2")  + "e-2");
   }
 };
