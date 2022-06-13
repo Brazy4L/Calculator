@@ -23,14 +23,16 @@ button {
     border-radius: 50px;
     margin-top: 10px;
     border-radius: 50px;
-    transition: border-radius 0.5s ease-out;
+    transition: border-radius 1s ease-out, box-shadow 0.45s ease;
     cursor: pointer;
     padding: 0;
+    box-shadow: inset 0px 0px 0px 0px #0099ff83;
 }
 
 button:active {
-    border-radius: 25px;
-    transition: border-radius 0.07s ease-out;
+    border-radius: 15px;
+    transition: border-radius 0.05s ease-out, box-shadow 0s ease-out;
+    box-shadow: inset 0px 0px 0px 80px #0000;
 }
 
 #display {
