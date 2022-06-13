@@ -84,3 +84,8 @@ allClear.addEventListener('click', () => {
   currentOperator = '';
   secondNumber = '';
 });
+
+const backspace = document.querySelector('#backspace');
+backspace.addEventListener('click', () => {
+  display.value = display.value.slice(0, -1);
+});

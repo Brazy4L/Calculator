@@ -25,6 +25,7 @@ button {
     margin-top: 10px;
     border-radius: 50px;
     transition: border-radius 0.5s ease-out;
+    cursor: pointer;
 }
 
 button:active {
@@ -47,7 +48,7 @@ button:active {
     color: #e1e1e4;
 }
 
-#parentheses, #percent, #divide, #multiply, #subtract, #add {
+#parentheses, #percentage, #divide, #multiply, #subtract, #add {
     background-color: #9eacba;
     color: #101d28;
 }
@@ -60,6 +61,11 @@ button:active {
 #all-clear {
     background-color: #e7dcfb;
     color: #1f133e
+}
+
+#parentheses {
+    opacity: 0;
+    cursor: default;
 }
 
 body {
