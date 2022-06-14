@@ -57,14 +57,17 @@ operators.forEach(operator => operator.addEventListener('click', () => {
   } else if (operator.id === 'percentage') {
     currentOperator = '%';
   }
+  history();
   display.value = '';
 }));
 
 const math = () => {
   if (firstNumber === '') {
     firstNumber = display.value;
+    history();
   } else {
     secondNumber = display.value;
+    history();
     firstNumber = round(operate(currentOperator, firstNumber, secondNumber));
     secondNumber = '';
   }
@@ -80,6 +83,7 @@ equals.addEventListener('click', () => {
 const allClear = document.querySelector('#all-clear');
 allClear.addEventListener('click', () => {
   display.value = '';
+  display2.textContent = '';
   firstNumber = '';
   currentOperator = '';
   secondNumber = '';
@@ -102,14 +106,14 @@ decimal.addEventListener('click', () => {
 const round = (num) => {
   if (num === 'BRAZY') {
     return 'It\'s Over 9000!';
-  } else if (Number.isNaN(num)) {
-    return ' ⇩ Press AC';
+  } else if (Number.isNaN(num) || num === Infinity || num === -Infinity) {
+    return 'Press AC';
   } else {
     return Math.round(num * 100) / 100;
   }
 };
 
-window.addEventListener('keydown', (event) => {
+document.addEventListener('keydown', (event) => {
   if (event.key === '1') {document.getElementById('one').click();}
   if (event.key === '2') {document.getElementById('two').click();}
   if (event.key === '3') {document.getElementById('three').click();}
@@ -131,7 +135,11 @@ window.addEventListener('keydown', (event) => {
   if (event.key === 'Backspace') {document.getElementById('backspace').click();}
   if (event.key === 'Delete') {document.getElementById('all-clear').click();}
   if (event.key === 'Escape') {document.getElementById('all-clear').click();}
-  if (event.key === 'c') {document.getElementById('all-clear').click();}
   if (event.key === '.') {document.getElementById('decimal').click();}
   if (event.key === ',') {document.getElementById('decimal').click();}
 });
+
+const display2 = document.querySelector('#display2');
+const history = () => {
+  display2.textContent = firstNumber + ' ' + currentOperator + ' ' + secondNumber;
+};

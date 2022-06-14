@@ -23,7 +23,7 @@ button {
     border-radius: 50px;
     margin-top: 10px;
     border-radius: 50px;
-    transition: border-radius 1s ease-out, box-shadow 0.45s ease;
+    transition: border-radius 1s ease-out, box-shadow 0.45s ease 0.06s;
     cursor: pointer;
     padding: 0;
     box-shadow: inset 0px 0px 0px 0px #0099ff83;
@@ -35,6 +35,12 @@ button:active {
     box-shadow: inset 0px 0px 0px 80px #0000;
 }
 
+/* .calculator {
+    border: 5px solid #344e7044;
+    padding: 5px;
+    border-radius: 15px;
+} */
+
 #display {
     font-family: inherit;
     font-size: 50px;
@@ -44,7 +50,25 @@ button:active {
     border: none;
     color: #e1e1e4;
     padding: 0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
+
+#display:focus {
+    outline: none;
+}
+
+#display2 {
+    font-family: inherit;
+    font-size: 35px;
+    width: 348.15px;
+    height: 50px;
+    color: #e1e1e4;
+    background-color: #242a30;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
 
 #backspace, #decimal, #zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
     background-color: #1f2529;
