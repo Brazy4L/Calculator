@@ -15,7 +15,11 @@ const divide = (a, b) => {
 const percentage = (a, b) => {
   b = 100
   return a / b;
-}
+};
+
+const power = function(a, b) {
+	return a ** b;
+};
 
 const operate = (operator, a, b) => {
   switch (operator) {
@@ -23,12 +27,14 @@ const operate = (operator, a, b) => {
       return add(a, b);
     case '-':
       return subtract(a, b);
-    case '*':
+    case '×':
       return multiply(a, b);
-    case '/':
+    case '÷':
       return divide(a, b);
     case '%':
       return percentage(a, b);
+    case '^':
+      return power(a, b);
   }
 };
 
@@ -59,7 +65,7 @@ let firstNumber = '';
 let currentOperator = '';
 let secondNumber = '';
 
-const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide, #percentage');
+const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide, #percentage, #power');
 operators.forEach(operator => operator.addEventListener('click', () => {
   math();
   if (operator.id === 'add') {
@@ -67,11 +73,13 @@ operators.forEach(operator => operator.addEventListener('click', () => {
   } else if (operator.id === 'subtract') {
     currentOperator = '-';
   } else if (operator.id === 'multiply') {
-    currentOperator = '*';
+    currentOperator = '×';
   } else if (operator.id === 'divide') {
-    currentOperator = '/';
+    currentOperator = '÷';
   } else if (operator.id === 'percentage') {
     currentOperator = '%';
+  } else if (operator.id === 'power') {
+    currentOperator = '^';
   }
   history();
   displayFont();
