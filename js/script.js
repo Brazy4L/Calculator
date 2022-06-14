@@ -35,8 +35,24 @@ const operate = (operator, a, b) => {
 const display = document.querySelector('#display');
 const numbers = document.querySelectorAll('#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine');
 
+const displayFont = () => { 
+  if (display.value.length >= 0 && display.value.length < 12) {
+    display.style.fontSize = '48px';
+  } else if (display.value.length > 12 && display.value.length < 18) {
+    display.style.fontSize = '32px';
+  } else if (display.value.length > 18) {
+    display.style.fontSize = '24px';
+  }
+  if (display2.value.length >= 0 && display2.value.length < 18) {
+    display2.style.fontSize = '32px';
+  } else if (display2.value.length > 18 && display2.value.length < 32) {
+    display2.style.fontSize = '16px';
+  }
+};
+
 numbers.forEach(number => number.addEventListener('click', () => {
   display.value += number.textContent;
+  displayFont();
 }));
 
 let firstNumber = '';
@@ -58,6 +74,7 @@ operators.forEach(operator => operator.addEventListener('click', () => {
     currentOperator = '%';
   }
   history();
+  displayFont();
   display.value = '';
 }));
 
@@ -77,13 +94,14 @@ const equals = document.querySelector('#equals');
 equals.addEventListener('click', () => {
   math();
   display.value = firstNumber;
+  displayFont();
   firstNumber = '';
 });
 
 const allClear = document.querySelector('#all-clear');
 allClear.addEventListener('click', () => {
   display.value = '';
-  display2.textContent = '';
+  display2.value = '';
   firstNumber = '';
   currentOperator = '';
   secondNumber = '';
@@ -92,6 +110,7 @@ allClear.addEventListener('click', () => {
 const backspace = document.querySelector('#backspace');
 backspace.addEventListener('click', () => {
   display.value = display.value.slice(0, -1);
+  displayFont();
 });
 
 const decimal = document.querySelector('#decimal');
@@ -101,6 +120,7 @@ decimal.addEventListener('click', () => {
   } else {
     display.value = display.value;
   }
+  displayFont();
 });
 
 const round = (num) => {
@@ -141,5 +161,5 @@ document.addEventListener('keydown', (event) => {
 
 const display2 = document.querySelector('#display2');
 const history = () => {
-  display2.textContent = firstNumber + ' ' + currentOperator + ' ' + secondNumber;
+  display2.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber;
 };
