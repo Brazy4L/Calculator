@@ -152,7 +152,7 @@ const displayFont = () => {
 
 // Keybinds
 
-document.addEventListener('keydown', (event) => {
+window.addEventListener('keydown', (event) => {
   if (event.key === '1') {document.getElementById('one').click();}
   if (event.key === '2') {document.getElementById('two').click();}
   if (event.key === '3') {document.getElementById('three').click();}
@@ -169,7 +169,6 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'x') {document.getElementById('multiply').click();}
   if (event.key === '/') {document.getElementById('divide').click();}
   if (event.key === '%') {document.getElementById('percentage').click();}
-  if (event.key === 'Enter') {document.getElementById('equals').click();}
   if (event.key === '=') {document.getElementById('equals').click();}
   if (event.key === 'Backspace') {document.getElementById('backspace').click();}
   if (event.key === 'Delete') {document.getElementById('all-clear').click();}
