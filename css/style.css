@@ -9,8 +9,8 @@ html {
 
 .container {
     display: flex;
-    justify-content: center;
     height: 100vh;
+    justify-content: center;
     align-items: center;
 }
 
@@ -43,15 +43,15 @@ button:active {
     color: #e1e1e4;
 }
 
+#display:focus, #display2:focus {
+    outline: none;
+}
+
 #display {
     height: 100px;
     background-color: #2b343b;
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-}
-
-#display:focus, #display2:focus {
-    outline: none;
 }
 
 #display2 {
@@ -60,7 +60,6 @@ button:active {
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
 }
-
 
 #backspace, #decimal, #zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine {
     background-color: #1f2529;

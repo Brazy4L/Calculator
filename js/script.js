@@ -17,9 +17,7 @@ const percentage = (a, b) => {
   return a / b;
 };
 
-const power = function(a, b) {
-	return a ** b;
-};
+const power = (a, b) => a ** b;
 
 const operate = (operator, a, b) => {
   switch (operator) {
@@ -38,34 +36,24 @@ const operate = (operator, a, b) => {
   }
 };
 
-const display = document.querySelector('#display');
-const numbers = document.querySelectorAll('#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine');
+let firstNumber = '';
+let currentOperator = '';
+let secondNumber = '';
 
-const displayFont = () => { 
-  if (display.value.length >= 0 && display.value.length < 12) {
-    display.style.fontSize = '48px';
-  } else if (display.value.length > 12 && display.value.length < 18) {
-    display.style.fontSize = '32px';
-  } else if (display.value.length > 18) {
-    display.style.fontSize = '24px';
-  }
-  if (display2.value.length >= 0 && display2.value.length < 18) {
-    display2.style.fontSize = '32px';
-  } else if (display2.value.length > 18 && display2.value.length < 32) {
-    display2.style.fontSize = '16px';
-  }
-};
+const numbers = document.querySelectorAll('#zero, #one, #two, #three, #four, #five, #six, #seven, #eight, #nine');
+const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide, #percentage, #power');
+const decimal = document.querySelector('#decimal');
+const equals = document.querySelector('#equals');
+const backspace = document.querySelector('#backspace');
+const allClear = document.querySelector('#all-clear');
+const display = document.querySelector('#display');
+const display2 = document.querySelector('#display2');
 
 numbers.forEach(number => number.addEventListener('click', () => {
   display.value += number.textContent;
   displayFont();
 }));
 
-let firstNumber = '';
-let currentOperator = '';
-let secondNumber = '';
-
-const operators = document.querySelectorAll('#add, #subtract, #multiply, #divide, #percentage, #power');
 operators.forEach(operator => operator.addEventListener('click', () => {
   math();
   if (operator.id === 'add') {
@@ -86,6 +74,49 @@ operators.forEach(operator => operator.addEventListener('click', () => {
   display.value = '';
 }));
 
+decimal.addEventListener('click', () => {
+  if (display.value.indexOf('.') === -1) {
+    display.value += '.';
+  } else {
+    display.value = display.value;
+  }
+  displayFont();
+});
+
+equals.addEventListener('click', () => {
+  math();
+  display.value = firstNumber;
+  displayFont();
+  firstNumber = '';
+});
+
+backspace.addEventListener('click', () => {
+  display.value = display.value.slice(0, -1);
+  displayFont();
+});
+
+allClear.addEventListener('click', () => {
+  display.value = '';
+  display2.value = '';
+  firstNumber = '';
+  currentOperator = '';
+  secondNumber = '';
+});
+
+// Round to two decimal places, check for dividing by zero, and check for NaN
+
+const round = (num) => {
+  if (num === 'BRAZY') {
+    return 'It\'s Over 9000!';
+  } else if (Number.isNaN(num) || num === Infinity || num === -Infinity) {
+    return 'Press AC';
+  } else {
+    return Math.round(num * 100) / 100;
+  }
+};
+
+// Takes two numbers, operator and performs the operation
+
 const math = () => {
   if (firstNumber === '') {
     firstNumber = display.value;
@@ -98,48 +129,28 @@ const math = () => {
   }
 };
 
-const equals = document.querySelector('#equals');
-equals.addEventListener('click', () => {
-  math();
-  display.value = firstNumber;
-  displayFont();
-  firstNumber = '';
-});
+const history = () => {
+  display2.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber;
+};
 
-const allClear = document.querySelector('#all-clear');
-allClear.addEventListener('click', () => {
-  display.value = '';
-  display2.value = '';
-  firstNumber = '';
-  currentOperator = '';
-  secondNumber = '';
-});
+// Change the font size of the display based on the amount of symbols of the display
 
-const backspace = document.querySelector('#backspace');
-backspace.addEventListener('click', () => {
-  display.value = display.value.slice(0, -1);
-  displayFont();
-});
-
-const decimal = document.querySelector('#decimal');
-decimal.addEventListener('click', () => {
-  if (display.value.indexOf('.') === -1) {
-    display.value += '.';
-  } else {
-    display.value = display.value;
+const displayFont = () => { 
+  if (display.value.length >= 0 && display.value.length < 12) {
+    display.style.fontSize = '48px';
+  } else if (display.value.length > 12 && display.value.length < 18) {
+    display.style.fontSize = '32px';
+  } else if (display.value.length > 18) {
+    display.style.fontSize = '24px';
   }
-  displayFont();
-});
-
-const round = (num) => {
-  if (num === 'BRAZY') {
-    return 'It\'s Over 9000!';
-  } else if (Number.isNaN(num) || num === Infinity || num === -Infinity) {
-    return 'Press AC';
-  } else {
-    return Math.round(num * 100) / 100;
+  if (display2.value.length >= 0 && display2.value.length < 18) {
+    display2.style.fontSize = '32px';
+  } else if (display2.value.length > 18 && display2.value.length < 32) {
+    display2.style.fontSize = '16px';
   }
 };
+
+// Keybinds
 
 document.addEventListener('keydown', (event) => {
   if (event.key === '1') {document.getElementById('one').click();}
@@ -165,9 +176,5 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') {document.getElementById('all-clear').click();}
   if (event.key === '.') {document.getElementById('decimal').click();}
   if (event.key === ',') {document.getElementById('decimal').click();}
+  if (event.key === '^') {document.getElementById('power').click();}
 });
-
-const display2 = document.querySelector('#display2');
-const history = () => {
-  display2.value = firstNumber + ' ' + currentOperator + ' ' + secondNumber;
-};
